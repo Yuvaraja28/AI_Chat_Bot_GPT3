@@ -1,0 +1,107 @@
+body {
+    background-color: #e2e6e9;
+    font-family: Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+}
+
+.main {
+    display: flex;
+    text-decoration: none;
+    flex-flow: column wrap;
+    flex-direction: column;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-height: 80vh;
+    width: 95%;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+.top-bar {
+    color: #ffebff;
+    font-family: "Righteous";
+    text-align: center;
+    font-weight: 400;
+    padding: 10px;
+    border-radius:  20px 20px 0 0;
+    font-size: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.messages {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    gap: 10px;
+    height: 70vh;
+}
+
+.message {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    background-color: #ecf4fa;
+    border: 2px solid #667eea;
+    border-radius: 15px;
+    width: 90%;
+}
+
+.head-message {
+    color: white;
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 16px;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+}
+
+.inner-message {
+    font-family: "Tilt Neon";
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 5px 0 5px;
+    padding-bottom: 0.5em;
+}
+
+.options {
+    font-weight: 600;
+    display: grid;
+    grid-auto-flow: column;
+    background-color: #ecf4fa;
+    padding: 15px;
+    margin-bottom: -0.5em;
+    border-radius:  0 0 20px 20px;
+}
+
+.options input {
+    font-family: "Poppins";
+    font-weight: 500;
+    background: transparent;
+    border: solid transparent;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+}
+
+.options button {
+    font-family: "Poppins";
+    font-weight: 500;
+    background: transparent;
+    border: solid transparent;
+    color: white;
+    background-color: #a037ec;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}

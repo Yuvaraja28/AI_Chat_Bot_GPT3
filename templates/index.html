@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>AI Chat Bot</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./static/style.css" preconnect>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Righteous&family=Tilt+Neon&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main">
+            <div class="top-bar">
+                AI Chat Bot - Made by Yuvaraja.M CSE-B 1st Year
+            </div>
+            <div id="messages" class="messages">
+            </div>
+            <div class="options">
+                <input type="text" id="messageBox" placeholder="Chat Here..." onkeydown="catch_enter()">
+                <button id="send" title="Send Message!" onclick="handleClick()">Send</button>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        <script>
+            const socket = io(document.location['origin']);
+            const sendBtn = document.getElementById('send');
+            function catch_enter() { if(event.keyCode == 13) { document.getElementById('send').click() } }
+            function append_msg(head_msg, inner_msg) { 
+                var mainContainer = document.getElementById("messages"); 
+                var msg_box = document.createElement("div");
+                var question = document.createElement("span");
+                var answer = document.createElement("span");
+                question.className = "head-message"; question.innerHTML = head_msg;
+                answer.className = "inner-message"; answer.innerHTML = inner_msg; 
+                msg_box.className = "message";
+                msg_box.appendChild(question)
+                msg_box.appendChild(answer)
+                mainContainer.appendChild(msg_box);
+                mainContainer.scrollTop = mainContainer.scrollHeight;
+            }
+            function handleClick() {
+                if (messageBox.value != "") {
+                    let msg = messageBox.value
+                    messageBox.value = '';
+                    socket.emit('s-message', JSON.stringify({message:msg}));
+                };
+            }
+            socket.on('r-message', function(data) {
+                console.log(data)
+                append_msg(JSON.parse(data)['question'], JSON.parse(data)['answer']);
+            });
+        </script>
+    </body>
+</html>
